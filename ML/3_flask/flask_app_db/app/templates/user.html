@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container">
+    <h1>Пользователи</h1>
+    <a href="{{ url_for('main_routes.index') }}">На главную</a>
+    <form action="{{ url_for('user_routes.add_user') }}" method="POST">
+        <label for="name">Имя:</label>
+        <input type="text" id="name" name="name" required>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        <label for="age">Возраст:</label>
+        <input type="number" id="age" name="age" required>
+        <label for="country">Страна:</label>
+        <input type="text" id="country" name="country" required>
+        <label for="balance">Баланс:</label>
+        <input type="number" id="balance" name="balance" required>
+        <button type="submit">Добавить пользователя</button>
+    </form>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Имя</th>
+            <th>Email</th>
+            <th>Возраст</th>
+            <th>Страна</th>
+            <th>Баланс</th>
+        </tr>
+        {% for user in users %}
+        <tr>
+            <td>{{ user.id }}</td>
+            <td>{{ user.name }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.age }}</td>
+            <td>{{ user.country }}</td>
+            <td>{{ user.balance }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

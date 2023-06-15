@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Главная страница</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Добро пожаловать!</h1>
+    <div class="buttons">
+       <a href="{{ url_for('user_routes.get_users') }}" class="button">Пользователи</a>
+        <a href="{{ url_for('order_routes.get_orders') }}" class="button">Заказы</a>
+    </div>
+</body>
+</html>

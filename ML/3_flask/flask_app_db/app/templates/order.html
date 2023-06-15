@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <h1>Заказы</h1>
+
+    <a href="{{ url_for('main_routes.index') }}">На главную</a>
+
+    <form action="{{ url_for('order_routes.add_order') }}" method="POST">
+        <label for="user_id">ID пользователя:</label>
+        <input type="number" id="user_id" name="user_id" required>
+        <label for="product_name">Название товара:</label>
+        <input type="text" id="product_name" name="product_name" required>
+        <label for="price">Цена:</label>
+        <input type="number" id="price" name="price" step="0.01" required>
+        <label for="quantity">Количество:</label>
+        <input type="number" id="quantity" name="quantity" required>
+        <label for="order_date">Дата заказа:</label>
+        <input type="date" id="order_date" name="order_date" required>
+        <button type="submit">Добавить заказ</button>
+    </form>
+
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Пользователь</th>
+            <th>Товар</th>
+            <th>Цена</th>
+            <th>Количество</th>
+            <th>Дата заказа</th>
+        </tr>
+        {% for order in orders %}
+        <tr>
+            <td>{{ order.id }}</td>
+            <td>{{ order.user.name }}</td>
+            <td>{{ order.product_name }}</td>
+             <td>{{ order.price }}</td>
+            <td>{{ order.quantity }}</td>
+            <td>{{ order.order_date }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}
